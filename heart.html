@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1 Year Completed ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffb6c1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    text-align: center;
+}
+
+/* Big Heart */
+.heart {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    background: #ff1744;
+    transform: rotate(-45deg);
+    margin: 20px auto 50px;
+    animation: heartbeat 1s infinite;
+    box-shadow: 0 0 40px #ff1744;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #ff1744;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -90px;
+    left: 0;
+}
+
+.heart::after {
+    left: 90px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: rotate(-45deg) scale(1);
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.15);
+    }
+}
+
+h1 {
+    font-size: 42px;
+    margin: 10px;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+h2 {
+    font-size: 26px;
+    margin: 10px;
+}
+
+/* Gift Box */
+.gift {
+    position: relative;
+    width: 150px;
+    height: 120px;
+    margin: 70px auto 0;
+    cursor: pointer;
+}
+
+.box {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    height: 100px;
+    background: #e91e63;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    left: 60px;
+    width: 30px;
+    height: 100%;
+    background: #ffd700;
+}
+
+.lid {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 170px;
+    height: 35px;
+    background: #c2185b;
+    border-radius: 5px;
+    z-index: 2;
+    transition: 1s;
+}
+
+.lid::after {
+    content: "";
+    position: absolute;
+    left: 70px;
+    width: 30px;
+    height: 35px;
+    background: #ffd700;
+}
+
+.bow {
+    position: absolute;
+    top: -35px;
+    left: 50px;
+    width: 50px;
+    height: 30px;
+    z-index: 3;
+}
+
+.bow::before,
+.bow::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 25px;
+    background: #ffd700;
+    border-radius: 50%;
+}
+
+.bow::before {
+    left: -15px;
+    transform: rotate(30deg);
+}
+
+.bow::after {
+    right: -15px;
+    transform: rotate(-30deg);
+}
+
+.gift.open .lid {
+    transform: translateY(-80px) rotate(-12deg);
+}
+
+.message {
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    animation: appear 1s forwards;
+}
+
+.gift.open + .message {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating hearts */
+.small-heart {
+    position: absolute;
+    color: white;
+    font-size: 25px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heart"></div>
+
+    <h1>❤️ 1 Year Successfully Completed ❤️</h1>
+    <h2>One beautiful year together!</h2>
+
+    <div class="gift" onclick="openGift()">
+        <div class="bow"></div>
+        <div class="lid"></div>
+        <div class="box"></div>
+    </div>
+
+    <div class="message">
+        🎁 Surprise! 🎁<br>
+        Here's to many more beautiful years! ❤️
+    </div>
+
+</div>
+
+<script>
+
+function openGift() {
+    document.querySelector(".gift").classList.toggle("open");
+
+    // Celebration hearts
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "small-heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 4) + "s";
+        heart.style.fontSize = (15 + Math.random() * 30) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+}
+
+</script>
+
+</body>
+</html>
